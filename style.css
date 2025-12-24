@@ -1,0 +1,109 @@
+/* Leviathan WebXR - Minimal Entry UI */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  background: #0a0e14;
+  color: #c5d4e0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Deep ocean gradient background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at 50% 120%, #0d2847 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, #1a3a5c 0%, transparent 30%),
+    linear-gradient(180deg, #0a0e14 0%, #0d1a2a 50%, #0a1628 100%);
+  z-index: -1;
+}
+
+#container {
+  text-align: center;
+  padding: 2rem;
+}
+
+#loading-screen {
+  margin-bottom: 2rem;
+}
+
+.loader {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+  border: 2px solid #1a3a5c;
+  border-top-color: #4a9eff;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+#loading-screen p {
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5a7a94;
+}
+
+#enter-xr {
+  background: linear-gradient(135deg, #1a5a8c 0%, #0d3a5c 100%);
+  border: 1px solid #2a6a9c;
+  color: #e0f0ff;
+  padding: 1rem 2.5rem;
+  font-family: inherit;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+#enter-xr:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2a7acc 0%, #1a5a8c 100%);
+  border-color: #4a9eff;
+  box-shadow: 0 0 30px rgba(74, 158, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+#enter-xr:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#status {
+  font-size: 0.75rem;
+  color: #4a6a7a;
+  letter-spacing: 0.05em;
+}
+
+.status-ready {
+  color: #4aff9f !important;
+}
+
+.status-error {
+  color: #ff6a4a !important;
+}
+
+/* Hide loading screen when ready */
+.ready #loading-screen {
+  display: none;
+}
+
+
